@@ -1,0 +1,20 @@
+{
+  "name": "restaurant-api",
+  "version": "1.0.0",
+  "description": "This is for communicating with the database.",
+  "scripts": {
+    "start": "cd node_scripts && node start.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node.js": "^0.0.1-security"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "engines": {
+    "node": "14.x"
+  },
+  "author": "Carter Allen Harbaugh",
+  "license": "MIT"
+}
