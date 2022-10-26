@@ -1,1 +1,1 @@
-console.log("Hello From Earth!");
+console.log("test auto deploly!");
