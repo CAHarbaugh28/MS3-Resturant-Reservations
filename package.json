@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "description": "This is for communicating with the database.",
   "scripts": {
-    "start": "cd node_scripts && node start.js"
+    "nodemon": "node home.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "node.js": "^0.0.1-security"
+    "node.js": "^0.0.1-security",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.25.3"
   },
   "keywords": [
     "heroku"
@@ -16,5 +22,17 @@
     "node": "14.x"
   },
   "author": "Carter Allen Harbaugh",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CAHarbaugh28/MS3-Resturant-Reservations.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CAHarbaugh28/MS3-Resturant-Reservations/issues"
+  },
+  "homepage": "https://github.com/CAHarbaugh28/MS3-Resturant-Reservations#readme"
 }
