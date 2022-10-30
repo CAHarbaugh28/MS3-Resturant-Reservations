@@ -1,5 +1,5 @@
 'use strict'
-//CUSTOMER CONTROLLER
+//Reservation CONTROLLER
 
 const StringHelpers = require('../libraries/string-helpers')
 const { pool } = require('../config')
