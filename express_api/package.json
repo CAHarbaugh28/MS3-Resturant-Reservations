@@ -4,7 +4,7 @@
   "description": "This is for communicating with the database.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node start.js"
+    "devStart": "nodemon index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

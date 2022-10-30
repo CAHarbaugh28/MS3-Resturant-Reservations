@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS public.reservations
     id SERIAL PRIMARY KEY,
     customer_id integer NOT NULL,
     table_id integer NOT NULL,
-    date date NOT NULL,
-    "time" time without time zone NOT NULL,
+    r_date date NOT NULL,
+    r_time time without time zone NOT NULL,
     created_date timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
     arrived boolean NOT NULL DEFAULT false,
     cancelled boolean NOT NULL DEFAULT false,
@@ -103,3 +103,15 @@ CREATE INDEX IF NOT EXISTS "fki_tableID_to_reservation-table"
     ON public.reservations USING btree
     (table_id ASC NULLS LAST)
     TABLESPACE pg_default;
+
+DROP TABLE IF EXISTS public.hours_list;
+
+CREATE TABLE IF NOT EXISTS public.hours_list
+(
+    id SERIAL PRIMARY KEY,
+	hours time without time zone NOT NULL
+);
+
+select * from public.hours_list;
+
+insert into public.hours_list (hours) values ('12:00 PM'), ('01:00 PM'), ('02:00 PM'), ('03:00 PM'), ('04:00 PM'), ('05:00 PM'), ('06:00 PM'), ('07:00 PM'), ('08:00 PM');
