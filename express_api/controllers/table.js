@@ -15,15 +15,15 @@ tables.get('/getAvailableTables/:rdate/:rtime/:numseats', function(req, res) {
   if(StringHelpers.isNullOrWhitespace(rdate) 
       || StringHelpers.isNullOrWhitespace(rtime) 
       || StringHelpers.isNullOrWhitespace(numOfSeats))
-    return res.status(404).send({ error: `Bad Request, missing parameter.`});
+    return res.status(400).send({ error: `Bad Request, missing parameter.`});
   var rdateParsed = Date.parse(rdate);
   if(!rdateParsed)
-    return res.status(404).send({ error: `Bad Request, Cannot parse date. ${rdate}`});
+    return res.status(400).send({ error: `Bad Request, Cannot parse date. ${rdate}`});
   var rtimeParsed = Date.parse(`1970-01-01 ${rtime.replace('PM', 'GMT').replace('AM', 'GMT')}`);
   if(!rtimeParsed)
-    return res.status(404).send({ error: `Bad Request, Cannot parse time. ${rtime}`});
+    return res.status(400).send({ error: `Bad Request, Cannot parse time. ${rtime}`});
   if(!(numOfSeats >= 2))
-    return res.status(404).send({ error: `Bad Request, Number of seats must be equal to or greater than 2. Requested: ${numOfSeats}`});
+    return res.status(400).send({ error: `Bad Request, Number of seats must be equal to or greater than 2. Requested: ${numOfSeats}`});
 
   const query = {
     name: 'getAvailableTables',
@@ -58,11 +58,11 @@ tables.get('/getAvailableTimes/:trow/:tcol/:rdate', function(req, res) {
   if(StringHelpers.isNullOrWhitespace(col) 
   || StringHelpers.isNullOrWhitespace(row) 
   || StringHelpers.isNullOrWhitespace(rdate))
-    return res.status(404).send({ error: `Bad Request, missing parameter.`});
+    return res.status(400).send({ error: `Bad Request, missing parameter.`});
 
   var rdateParsed = Date.parse(rdate);
   if(!rdateParsed)
-    return res.status(404).send({ error: `Bad Request, Cannot parse date. ${rdate}`});
+    return res.status(400).send({ error: `Bad Request, Cannot parse date. ${rdate}`});
 
   const tableIdQuery = {
     name: 'tableIdQuery',
@@ -76,7 +76,7 @@ tables.get('/getAvailableTimes/:trow/:tcol/:rdate', function(req, res) {
     }
 
     if(results.rowCount == 0)
-      return res.status(404).send({ error: `Bad Request, Table does note exist. Column '${col}': Row '${row}'`});
+      return res.status(400).send({ error: `Bad Request, Table does note exist. Column '${col}': Row '${row}'`});
 
     var tableId = results.rows[0].id
     console.log(`Table Location - Column "${col}": Row "${row}" TableId: ${tableId}`);

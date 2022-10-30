@@ -12,7 +12,7 @@ app.use(cors())
 
 app.use('/api/table/', require('./controllers/table'));
 app.use('/api/customer', require('./controllers/customer'));
-// app.use('/api/reservation', require('./controllers/reservation'));
+app.use('/api/reservation', require('./controllers/reservation'));
 
 
 // const getBooks = (request, response) => {
