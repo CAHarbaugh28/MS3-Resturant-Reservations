@@ -1,1 +1,39 @@
-<mxfile host="app.diagrams.net" modified="2022-10-26T04:19:52.008Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36" etag="HC7R2t2bOgEcd3L6rYT8" version="20.5.1" type="device"><diagram id="OZetMZ4eDg4cCrSn1TX6" name="Page-1">5VnbcpswEP0aP6bDJTbJo29tM9M2niadJn3pyCCDWoGIJHzJ13cFwoCBNGlo7aEvtnS0Ertnd7UgDexpuH3HURx8ZB6mA8vwtgN7NrAs52IEvwrYZcC5Y2aAz4mXQSXghjxiDRoaTYiHRUVQMkYliaugy6IIu7KCIc7Zpiq2YrT61Bj5uAbcuIjW0a/Ek0GGXgyNAn+PiR/kTzYNPRKiXFgDIkAe25Qgez6wp5wxmbXC7RRTxV3OSzbvbcvoXjGOI/mcCdfkO/lJzW8utwJ3JcSVNdydnWvd5C43GHtgv+4yLgPmswjReYFOOEsiD6tVDegVMh8YiwE0AfyBpdxpZ6JEMoACGVI9Cgrz3Z2en3buVefNMO/OtuXB2U73Ml2Vgq0UaEiwhLtaahpPHi9X9l0wXzri02rtP6zvz/JQQtzH8gl+zL2jIMAxCzHoA/M4pkiSdVUPpEPN38vtpy4YAQ0tQ2eFnYePTgo7j5F8iUwvPavwKTRKahRQ6ulmrz9l/RrRRJvwGSNXKfgVLwWRuBYVVZ9vApC5iVFK8QbyvurfVresMZd4W4LqzOpRy6gydKm7myIHzZy0oJR/lm20O6NC4xOcNUaCc9xMKZLjvpIbXWZKewY8I1NGr8yUVzmnHtCfoBABMt/GHAsBrfHiqouoroVwA6utUW07pxbVVo24BRPSB84AnSGJlkh0shu8irfh+anxdnGU3WBL5F2pXaqa0Cu2AtXJd4L9DmL+i1rbvjM8YwexjrmDjGqJMLBGFNSdeGRd8fToIVGvbBMIZ3mGKPGjgT0GCYpXMiUuF4CWr//ThUSMosaVlsj96afRceYyyni2HomIJIg2LvlufpsJga0oJvALmQqrAgXOBOx0YPW3wPYY7CEwcEtCldFq1ENQ3tV4phSAmV5VXQFO7a6iS36IvJqcdkvK6ivoUH/VkWDXviMwkqJkWod8txPwIv46C6VGPf7mAzvkcvHl0ONuIiSkMT8up12Gi3Pk+Og29DUSIUi2Ylz7MO8LyUnkl+dPe8hBHLAI/5+m4xAR+hL/94WBPyyWJ2nLidWxLsvK9c1hXYGvGMzXuDcm9rOspO97V15ZxMjny35upfkLT8VqNX+EQvX1HC1FnBHRWwrS1/jWYnIw2ksG0m+XetC3C/SFgWPX099/PJ3YMeG5VT/vss2G8y7b+FvnXfnT+nxR1Gj4Zf3wqv1K5ViHV5e1w6uxKyEXD10mAhSrZhLSTMCeqEAlLvgELTFdMAF5yyCRZksmoUSVBMZZhs0kOwh4lkhKIjzdX8Aa3WTBwR2Z6QxrSTBsyIHRy1NAvSrur2GzO7biLtue/wI=</diagram></mxfile>
+<mxfile host="65bd71144e">
+    <diagram id="OZetMZ4eDg4cCrSn1TX6" name="Page-1">
+        <mxGraphModel dx="1131" dy="500" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="Oi_ikl1Zcr2hcfssI25y-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="CpBz9f3XhEb7sNfvgqvY-1" target="Oi_ikl1Zcr2hcfssI25y-1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="350" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="CpBz9f3XhEb7sNfvgqvY-1" value="React Website" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="90" width="120" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="Oi_ikl1Zcr2hcfssI25y-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Oi_ikl1Zcr2hcfssI25y-1" target="Oi_ikl1Zcr2hcfssI25y-6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Oi_ikl1Zcr2hcfssI25y-1" value="Node Express API" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="370" y="90" width="120" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="Oi_ikl1Zcr2hcfssI25y-2" value="Postgres Database" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="90" width="120" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="Oi_ikl1Zcr2hcfssI25y-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Oi_ikl1Zcr2hcfssI25y-6" target="Oi_ikl1Zcr2hcfssI25y-2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Oi_ikl1Zcr2hcfssI25y-6" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;GET: /api/table/{id}/getAvalibleTimes/{date}&lt;/span&gt;&lt;/div&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;GET: /api/table/getAvalibleTables/{date}/{time}/{seats}&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;PUT: /api/customer&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;name&quot;: &quot;string&quot;,&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;phone: &quot;string&quot;,&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;email&quot;: &quot;string&quot;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;POST: /api/reserve&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;tableId&quot; : int,&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;customerId&quot;:&amp;nbsp; int,&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;date&quot;: &quot;date&quot;,&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;time&quot; : &quot;time&quot;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="460" width="310" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="Oi_ikl1Zcr2hcfssI25y-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Oi_ikl1Zcr2hcfssI25y-9" target="CpBz9f3XhEb7sNfvgqvY-1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="Oi_ikl1Zcr2hcfssI25y-9" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="175" width="50" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
