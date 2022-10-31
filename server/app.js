@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//api endpoints
+//serve up the api endpoints
 app.use('/api/table/', require('./controllers/table'));
 app.use('/api/customer', require('./controllers/customer'));
 app.use('/api/reservation', require('./controllers/reservation'));

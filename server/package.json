@@ -20,7 +20,7 @@
     "pg-hstore": "^2.3.4"
   },
   "keywords": [
-    "heroku"
+    "heroku","api","express","postgres","resturant","burgers"
   ],
   "engines": {
     "node": ">=14.x"
