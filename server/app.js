@@ -18,7 +18,13 @@ app.use(cookieParser());
 app.use('/api/table/', require('./controllers/table'));
 app.use('/api/customer', require('./controllers/customer'));
 app.use('/api/reservation', require('./controllers/reservation'));
+
+//serve up react app in the public folder
 app.use(express.static("public"))
+//serve up the default index.html
+app.get('/', function(req, res){
+  res.redirect('/index.html');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
