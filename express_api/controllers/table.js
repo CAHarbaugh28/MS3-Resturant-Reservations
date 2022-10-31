@@ -96,7 +96,7 @@ tables.get('/getAvailableTimes/:trow/:tcol/:rdate', function(req, res) {
       "   where "  +
       "     ti.id = $1 " +
       "     and r.r_date = $2 " +
-      "     and r.canceled = false " +
+      "     and r.cancelled = false " +
       " );",
       
       values: [ tableId, rdate ]

@@ -40,7 +40,7 @@ reservations.get('/getAllByDate/:rdate', async (req, res) => {
     return res.status(400).send({ error: `Bad Request, Cannot parse date. ${rdate}`});
 
     const query = {
-      name: 'getReservation',
+      name: 'getReservationsAllByDate',
       text: "select id, customer_id as customerId, table_id as tableId, r_date as rdate," +
       " r_time as rtime, arrived, cancelled, confirmationid as confirmationCode, created_date as created from public.reservations where r_date=$1;",
       values: [ rdate ]
