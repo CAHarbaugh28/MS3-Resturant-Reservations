@@ -1,1 +1,1 @@
-web: cd express_api && npm install && node app.js
+web: cd express_api && npm install && node bin/www
