@@ -1,0 +1,39 @@
+{
+  "name": "restaurant-api",
+  "version": "1.0.0",
+  "description": "This is for communicating with the database.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "node.js": "^0.0.1-security",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4"
+  },
+  "keywords": [
+    "heroku","api","express","postgres","resturant","burgers"
+  ],
+  "engines": {
+    "node": ">=14.x"
+  },
+  "author": "Carter Allen Harbaugh",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CAHarbaugh28/MS3-Resturant-Reservations.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CAHarbaugh28/MS3-Resturant-Reservations/issues"
+  },
+  "homepage": "https://github.com/CAHarbaugh28/MS3-Resturant-Reservations#readme"
+}
