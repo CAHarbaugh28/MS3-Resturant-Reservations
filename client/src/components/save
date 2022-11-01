@@ -1,0 +1,57 @@
+<FormControl sx={{ m: 1, minWidth:80 }}>
+                  <InputLabel id="demo-simple-select-label">Table</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    // value={age}
+                    label="Age"
+                    // onChange={handleChange}
+                  >
+                    <MenuItem value={1}>1A</MenuItem>
+                    <MenuItem value={2}>1B</MenuItem>
+                    <MenuItem value={3}>1C</MenuItem>
+                    <MenuItem value={4}>1D</MenuItem>
+                    <MenuItem value={5}>2A</MenuItem>
+                    <MenuItem value={6}>2B</MenuItem>
+                    <MenuItem value={7}>2C</MenuItem>
+                    <MenuItem value={8}>3A</MenuItem>
+                    <MenuItem value={9}>3B</MenuItem>
+                    <MenuItem value={10}>3C</MenuItem>
+                    <MenuItem value={11}>4A</MenuItem>
+                  </Select>
+                </FormControl>
+
+<img src="images/tablesLayout.jpeg" alt="table selection" width="689px" height="409"/>s
+
+
+<div className="pickTimeDate">
+    <div className="pickDate">
+      <p htmlFor="reserveDate">Choose a Date</p>
+      <input type="date" id="reserveDate" name="reservationDate"/>
+    </div>
+
+    <div className="pickTime">
+      <p htmlFor="reserveTime">Choose Time</p>
+      <input type="time" id="reserveTime" name="reservationTime"/>
+    </div>
+    <button>Back</button>
+  </div>
+
+  <div className="getCustInfo">
+    <h2>Add your reservation information</h2>
+    <form action="/users/create" method="POST">
+        <p htmlFor="fname">First Name</p>
+        <input type="text" id="fname" placeholder="Enter First Name" name="firstName" required/>
+
+        <p htmlFor="lname">Last Name</p>
+        <input type="text" id="lname" placeholder="Enter Last Name" name="lastName" required/>
+
+        <p htmlFor="phonenum">Phone Number</p>
+        <input type="text" id="phonenum" placeholder="Enter Phone Number" name="phoneNumber" required/>
+
+        <p htmlFor="email">Email</p>
+        <input type="text" id="email" placeholder="Enter Email Adress" name="emailAdress" required/>
+    
+        <button type="submit">Submit</button>
+    </form>
+</div>

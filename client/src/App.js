@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
   
 import Home from "./views/Home";
-import FullWidthGrid from "./components/reserve"
+import BasicGrid from "./components/reserve"
 import Header from "./views/Default"
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Header/>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/reserve" component={FullWidthGrid} />
+          <Route exact path="/reserve" component={BasicGrid} />
        </Switch>
     </div>
     </Router>
