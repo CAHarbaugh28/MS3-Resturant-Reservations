@@ -7,16 +7,13 @@
 var app = require('../app');
 var debug = require('debug')('resturant-api:server');
 var http = require('http');
-
+var configuredPort = (process.env.PORT || process.env.LISTENPORT || 3002);
 /**
  * Get port from environment and store in Express.
  */
-console.log(`Port: ${process.env.PORT || process.env.LISTENPORT || 3002}`);
-
-
-var port = normalizePort(process.env.LISTENPORT);
-app.set('port', port);
-
+var normPort = normalizePort(configuredPort);
+app.set('port', normPort);
+console.log(`Configured Port: ${normPort}`);
 /**
  * Create HTTP server.
  */
@@ -27,7 +24,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(process.env.PORT || process.env.LISTENPORT || 3002);
+server.listen(normPort)
 server.on('error', onError);
 server.on('listening', onListening);
 
