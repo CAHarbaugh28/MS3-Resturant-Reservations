@@ -1,15 +1,17 @@
 import React from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { BorderColor } from '@material-ui/icons';
+import {  makeStyles, createStyles } from '@mui/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import { BorderColor } from '@mui/icons-material';
+
 
 const useStyles = makeStyles((theme: Theme) =>
 createStyles({
 	paper: {
-	padding: theme.spacing(2),
+	//padding: theme.spacing(2),
 	textAlign: 'center',
-	color: theme.palette.text.secondary,
+	//color: theme.palette.text.secondary,
 	},
 	root: {
 	flexGrow: 1,
@@ -17,10 +19,13 @@ createStyles({
 }),
 );
 
+const theme = createTheme();
+
 export default function FullWidthGrid() {
 const classes = useStyles();
 
 return (
+  <ThemeProvider theme={theme}>
 	<div className ="reserveMain" style={{backgroundColor: '$light-white',
 				padding: '2em', }}>
 	<Grid container spacing={3}>
@@ -70,12 +75,12 @@ return (
 		<Paper className={classes.paper}>
             <div className="pickTimeDate">
               <div className="pickDate">
-                <p for="reserveDate">Choose a Date</p>
+                <p htmlFor="reserveDate">Choose a Date</p>
                 <input type="date" id="reserveDate" name="reservationDate"/>
               </div>
 
               <div className="pickTime">
-                <p for="reserveTime">Choose Time</p>
+                <p htmlFor="reserveTime">Choose Time</p>
                 <input type="time" id="reserveTime" name="reservationTime"/>
               </div>
               <button>Back</button>
@@ -87,16 +92,16 @@ return (
             <div className="getCustInfo">
                 <h2>Add your reservation information</h2>
                 <form action="/users/create" method="POST">
-                    <p for="fname">First Name</p>
+                    <p htmlFor="fname">First Name</p>
                     <input type="text" id="fname" placeholder="Enter First Name" name="firstName" required/>
 
-                    <p for="lname">Last Name</p>
+                    <p htmlFor="lname">Last Name</p>
                     <input type="text" id="lname" placeholder="Enter Last Name" name="lastName" required/>
 
-                    <p for="phonenum">Phone Number</p>
+                    <p htmlFor="phonenum">Phone Number</p>
                     <input type="text" id="phonenum" placeholder="Enter Phone Number" name="phoneNumber" required/>
 
-                    <p for="email">Email</p>
+                    <p htmlFor="email">Email</p>
                     <input type="text" id="email" placeholder="Enter Email Adress" name="emailAdress" required/>
                 
                     <button type="submit">Submit</button>
@@ -106,6 +111,6 @@ return (
 		</Grid>
 	</Grid>
 	</div>
-    
+  </ThemeProvider>
 );
 }
