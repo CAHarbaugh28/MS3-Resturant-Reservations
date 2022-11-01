@@ -1,1 +1,1 @@
-web: cd server && npm run heroku-build
+web: cd server && npm run heroku-start
