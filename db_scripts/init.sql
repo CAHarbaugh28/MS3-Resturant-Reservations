@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS public.table_info;
 CREATE TABLE IF NOT EXISTS public.table_info
 (
     id SERIAL PRIMARY KEY,
-    table_column numeric NOT NULL,
-    table_row character varying COLLATE pg_catalog."default" NOT NULL,
+    table_column character varying COLLATE pg_catalog."default" NOT NULL,
+    table_row numeric NOT NULL,
     seat_count numeric NOT NULL
 )
 
@@ -13,7 +13,7 @@ TABLESPACE pg_default;
 ALTER TABLE IF EXISTS public.table_info
     OWNER to postgres;
 
-INSERT INTO public.table_info (table_column, table_row, seat_count)
+INSERT INTO public.table_info (table_row, table_column, seat_count)
 	VALUES 
     (1, 'A', 4), (2, 'A', 4), (3, 'A', 4), (4, 'A', 4), (1, 'B', 2), (2, 'B', 2), (3, 'B', 2), (4, 'B', 2), (1, 'C', 4), (2, 'C', 4), (3, 'C', 4), (4, 'C', 4);
 
@@ -32,25 +32,24 @@ CREATE TABLE IF NOT EXISTS public.customer_info
     CONSTRAINT customer_info_phone_number_key UNIQUE (phone_number)
 )
 
-TABLESPACE pg_default;
-
 ALTER TABLE IF EXISTS public.customer_info
     OWNER to postgres;
 
-INSERT INTO public.customer_info (first_name, last_name, phone_number, email)
-	VALUES ('Corey', 'Harbaugh', 8164053997, 'corey.harbaugh@gmail.com');
+--INSERT INTO public.customer_info (first_name, last_name, phone_number, email)
+--	VALUES ('Corey', 'Harbaugh', 8164053997, 'corey.harbaugh@gmail.com');
 
-GO
+--INSERT INTO public.customer_info (first_name, last_name, phone_number, email)
+--	VALUES('Carter', 'Harbaugh', '1231234444', 'carter.harbaugh@gmail.com');
 
--- DROP TABLE IF EXISTS public.reservations;
+DROP TABLE IF EXISTS public.reservations;
 
 CREATE TABLE IF NOT EXISTS public.reservations
 (
     id SERIAL PRIMARY KEY,
     customer_id integer NOT NULL,
     table_id integer NOT NULL,
-    date date NOT NULL,
-    "time" time without time zone NOT NULL,
+    r_date date NOT NULL,
+    r_time time without time zone NOT NULL,
     created_date timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
     arrived boolean NOT NULL DEFAULT false,
     cancelled boolean NOT NULL DEFAULT false,
@@ -67,7 +66,24 @@ CREATE TABLE IF NOT EXISTS public.reservations
         NOT VALID
 )
 
-TABLESPACE pg_default;
+--INSERT INTO public.reservations
+--(customer_id, table_id, r_date, r_time, created_date, arrived, cancelled)
+--values (1, 1, '2022-11-11', '12:00 PM', CURRENT_TIMESTAMP, false, false),
+--(1, 1, '2022-11-11', '01:00 PM', CURRENT_TIMESTAMP, false, false),
+--(1, 1, '2022-11-11', '02:00 PM', CURRENT_TIMESTAMP, false, false),
+--(1, 1, '2022-11-11', '03:00 PM', CURRENT_TIMESTAMP, false, false),
+--(1, 1, '2022-11-11', '04:00 PM', CURRENT_TIMESTAMP, false, false),
+--(1, 1, '2022-11-11', '05:00 PM', CURRENT_TIMESTAMP, false, false),
+--(1, 1, '2022-11-11', '06:00 PM', CURRENT_TIMESTAMP, false, false),
+--(1, 1, '2022-11-11', '07:00 PM', CURRENT_TIMESTAMP, false, false),
+--(1, 1, '2022-11-11', '08:00 PM', CURRENT_TIMESTAMP, false, false),
+----(1, 1, '2022-11-11', '09:00 PM', CURRENT_TIMESTAMP, false, false)
+
+--delete from public.reservations where id = 4;
+
+--INSERT INTO public.reservations
+--(customer_id, table_id, r_date, r_time, created_date, arrived, cancelled)
+--VALUES(2, 2, '2022-11-11', '07:00 PM', CURRENT_TIMESTAMP, false, false);
 
 ALTER TABLE IF EXISTS public.reservations
     OWNER to postgres;
@@ -103,3 +119,16 @@ CREATE INDEX IF NOT EXISTS "fki_tableID_to_reservation-table"
     ON public.reservations USING btree
     (table_id ASC NULLS LAST)
     TABLESPACE pg_default;
+
+
+DROP TABLE IF EXISTS public.hours_list;
+
+CREATE TABLE IF NOT EXISTS public.hours_list
+(
+    id SERIAL PRIMARY KEY,
+	hours time without time zone NOT NULL
+);
+
+--select * from public.hours_list;
+
+insert into public.hours_list (hours) values ('12:00 PM'), ('01:00 PM'), ('02:00 PM'), ('03:00 PM'), ('04:00 PM'), ('05:00 PM'), ('06:00 PM'), ('07:00 PM'), ('08:00 PM');
