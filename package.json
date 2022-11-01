@@ -3,11 +3,7 @@
   "version": "1.0.0",
   "description": "This is for communicating with the database.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "devStart": "nodemon ./bin/www",
-    "start": "node ./bin/www",
-    "build-react-with-server": "cd ../client && npm run heroku-build",
-    "heroku-api-start": "npm install && node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

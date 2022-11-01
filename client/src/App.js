@@ -7,6 +7,7 @@ import {
   
 import Home from "./views/Home";
 import BasicGrid from "./components/reserve"
+import BackendTester from "./components/backend-tester"
 import Header from "./views/Default"
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/reserve" component={BasicGrid} />
+          <Route exact path="/tester" component={BackendTester} />
        </Switch>
     </div>
     </Router>
