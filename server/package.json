@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "devStart": "nodemon ./bin/www",
     "start": "node ./bin/www",
-    "heroku-start": "cd ../client && npm run heroku-build && cd ../server && npm install && node ./bin/www",
+    "build-react-with-server": "cd ../client && npm run heroku-build",
     "heroku-api-start": "npm install && node ./bin/www"
   },
   "dependencies": {
