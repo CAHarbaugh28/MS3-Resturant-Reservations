@@ -13,7 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function BasicGrid() {
+export default function BackendTester() {
   const [reservations, setReservations] = React.useState(null);
   
   const getReservations = () => {
