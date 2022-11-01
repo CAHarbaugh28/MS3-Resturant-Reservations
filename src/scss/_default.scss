@@ -1,0 +1,41 @@
+@import 'config';
+
+    .header {
+        background-color: $dark-brown;
+        width: 100%;
+        color: $light-tan;
+        font-family: $my-font;
+        font-size: 30px;
+        
+        h1 {
+            margin: 0;
+            padding: .2em;
+            text-align: center;
+            font-weight: 100;
+            letter-spacing: 10px;
+            word-spacing: 20px;
+        }
+        .headerNav {
+            background-color: $light-brown;
+            float: left;
+            width: 100%;
+            padding: .5em 0;
+            ul {
+                list-style-type: none;
+                text-align: left;
+                font-size: 20px;
+                font-family: $my-font;
+                background-color: $light-brown;
+                margin: 0;
+                a {
+                    float: left;
+                    text-align: center;
+                    display: inline;
+                    padding: 0 2em;
+                    text-decoration: none;
+                    color: $light-tan;
+                    
+                }
+            }
+        }
+    }

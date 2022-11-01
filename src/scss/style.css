@@ -1,0 +1,115 @@
+.header {
+  background-color: #230903;
+  width: 100%;
+  color: #EBD1A7;
+  font-family: Optima, sans-serif;
+  font-size: 30px;
+}
+.header h1 {
+  margin: 0;
+  padding: 0.2em;
+  text-align: center;
+  font-weight: 100;
+  letter-spacing: 10px;
+  word-spacing: 20px;
+}
+.header .headerNav {
+  background-color: #656256;
+  float: left;
+  width: 100%;
+  padding: 0.5em 0;
+}
+.header .headerNav ul {
+  list-style-type: none;
+  text-align: left;
+  font-size: 20px;
+  font-family: Optima, sans-serif;
+  background-color: #656256;
+  margin: 0;
+}
+.header .headerNav ul a {
+  float: left;
+  text-align: center;
+  display: inline;
+  padding: 0 2em;
+  text-decoration: none;
+  color: #EBD1A7;
+}
+
+body {
+  margin: 0;
+  background-color: #EFE6DD;
+}
+
+*:focus {
+  outline: none;
+}
+
+.reserveMain {
+  font-family: Optima, sans-serif;
+}
+.reserveMain img {
+  max-width: 100%;
+  height: auto;
+  padding-bottom: 0.8em;
+}
+.reserveMain .pickTable h2 {
+  font-size: 40px;
+  font-weight: 500;
+  margin: 0.5em 0;
+}
+.reserveMain .pickTable .tableDd p {
+  font-size: 30px;
+  font-weight: 500;
+  color: #656256;
+  margin: 0.2em 0;
+}
+.reserveMain .pickTable .tableDd button {
+  font-size: 28px;
+  text-decoration: none;
+  background-color: #EBE0CE;
+  border-radius: 5px;
+  border-color: #656256;
+  color: #656256;
+  text-align: left;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.1em 0.2em;
+  margin: 0 0.1em;
+  transition: 250ms;
+}
+.reserveMain .pickTable .tableDd button:hover {
+  background-color: #656256;
+  border-color: #EBE0CE;
+  color: #EBE0CE;
+}
+.reserveMain .pickTimeDate {
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+}
+.reserveMain .pickTimeDate p {
+  font-weight: 500;
+  font-size: 40px;
+  margin: 0.5em 0;
+}
+.reserveMain .pickTimeDate input {
+  font-size: 22px;
+}
+.reserveMain .pickTimeDate button {
+  font-size: 28px;
+  text-decoration: none;
+  background-color: #656256;
+  border-radius: 5px;
+  color: #EBD1A7;
+  text-align: left;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.reserveMain .getCustInfo h2 {
+  font-size: 40px;
+  font-weight: 500;
+  margin: 0.5em 0;
+}/*# sourceMappingURL=style.css.map */
