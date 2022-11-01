@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "devStart": "nodemon ./bin/www",
     "start": "node ./bin/www",
-    "heroku-start": "cd ../client && npm install --legacy-peer-deps && npm run heroku-build && cd ../server && npm install && node bin/www"
+    "heroku-start": "cd ../client && npm install --legacy-peer-deps && npm run heroku-build && cd ../server && npm install && node ./bin/www",
+    "heroku-api-start": "npm install && node ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
