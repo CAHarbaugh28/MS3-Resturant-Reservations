@@ -1,1 +1,1 @@
-web: cd server && npm install && node bin/www
+web: cd server && npm run heroku-build
