@@ -23,7 +23,6 @@ const theme = createTheme();
 
 export default function FullWidthGrid() {
 const classes = useStyles();
-
 return (
   <ThemeProvider theme={theme}>
 	<div className ="reserveMain" style={{backgroundColor: '$light-white',
