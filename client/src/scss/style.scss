@@ -5,93 +5,63 @@ body {
     margin: 0;
     background-color: #EFE6DD;
 }
-*:focus {
-    outline: none;
+
+
+
+
+    .tableSelect {
+        display: block;
+    }
+    h2 {
+        text-align: center;
+        color: $light-brown;
+        font-family: $my-font;
+        font-size: 32px;
+        font-weight: 100;
+        
+    }
+
+    img {
+        padding: 0 25px 15px 25px;
+        max-width:100%;
+        height: auto;
+        display: block;
+    }
+
+    h3 {
+        font-family: $my-font;
+        color: $light-brown;
+        font-size: 25px;
+        font-weight: 100;
+        margin: .5em 0;
+    }
+    p {
+        font-family: $my-font;
+        color: $light-brown;
+        font-size: 20px;
+        margin: .2em 0;
+    }
+
+    .next {
+        display: block;
+        button {
+            margin-bottom: 15px;
+            font-family: $my-font;
+            background-color: $light-brown;
+            color: $light-white;
+            font-size: 24px;
+            border-radius: 5px;
+            border: none;
+            padding: .3em 1em;
+            transition: 250ms;
+            text-transform: none;
+            &:hover {
+                background-color: $dark-brown;
+            }
+        }
+    }
+    
+.custModal {
+
 }
 
-// Reserve Page
-
-// .reserveMain {
-//     font-family: $my-font;
-//     div {
-//     }
-    
-//     img {
-//         max-width: 100%;
-//         height: auto;
-//         padding-bottom: .8em;
-//     }
-//     .pickTable {
-//         h2 {
-//             font-size: 40px;
-//             font-weight: 500;
-//             margin: .5em 0;
-//             color: $light-brown;
-//         }
-//         .tableDd {
-
-//             button {
-//                 font-size: 28px;
-//                 text-decoration: none;
-//                 background-color: $light-white;
-//                 border-radius: 5px;
-//                 border-color: $light-brown;
-//                 color: $light-brown;
-//                 text-align: left;
-//                 width: fit-content;
-//                 padding: .1em .2em;
-//                 margin: 0 .1em;
-//                 transition: 250ms;
-//                 &:hover {
-//                     background-color: $light-brown;
-//                     border-color: $light-white;
-//                     color: $light-white;
-//                 }
-//             }
-//         }
-//     }
-
-//     .pickTimeDate {
-//         justify-content: space-between;
-//         flex-direction: column;
-//         display: flex;
-//         p {
-//             font-weight: 500;
-//             font-size: 40px;
-//             margin: .5em 0;
-//         }
-//         input {
-//             font-size: 22px;
-//         }
-//         input[type=date] {
-
-//         }
-//         .pickDate {
-//             p {
-//                 color: $light-brown;
-//             }
-//         }
-//         .pickTime {
-//             p {
-//                 color: $light-brown;
-//             }
-//         }
-//         button {
-//             font-size: 28px;
-//             text-decoration: none;
-//             background-color: $light-brown;
-//             border-radius: 5px;
-//             color: $light-tan;
-//             text-align: left;
-//             width: fit-content;
-
-//         }
-//     }
-//     .getCustInfo {
-//         h2 {
-//             font-size: 40px;
-//             font-weight: 500;
-//             margin: .5em 0;
-//         }
-//     }
-// }

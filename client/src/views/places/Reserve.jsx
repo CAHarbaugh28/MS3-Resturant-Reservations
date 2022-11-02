@@ -1,59 +1,95 @@
-import React from 'react';
+import * as React from 'react';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Modal from '@mui/material/Modal';
+import dayjs from 'dayjs';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import BasicModal from '../../components/reserve';
 
-function Reserve () {
-    return (
-        <div className="makeReservation">
-          <div className="pickTable">
-            <h2>#1. Select which table you'd like to set your reservation for.</h2>
 
-            <img src="images/tableLayout.jpeg" alt="table selection" useMap="#table_select" width="689px" height="409"/>
 
-            <map name="table_select">
-                <area shape="rect" coords="149, 24, 245, 85" alt="A1" href=""/>
-                <area shape="rect" coords="225, 26, 346, 85" alt="A2" href="" />
-                <area shape="rect" coords="351, 31, 445, 85" alt="A3" href="" />
-                <area shape="rect" coords="452, 28, 534, 85" alt="A4" href="" />
-                <area shape="poly" coords="144, 137, 193, 116, 230, 143, 175, 161" alt="B1" href="" />
-                <area shape="rect" coords="317, 101, 373, 131" alt="B2" href=""/>
-                <area shape="poly" coords="454, 145, 488, 120, 536, 142, 509, 170" alt="B3" href=""/>
-                <area shape="rect" coords="107, 228, 141, 359" alt="C1" href=""/>
-                <area shape="poly" coords="282, 196, 327, 166, 378, 193, 331, 227" alt="C2" href=""/>
-                <area shape="poly" coords="505, 273, 542, 235, 616, 275, 580, 318" alt="C3" href=""/>
-                <area shape="poly" coords="284, 334, 347, 283, 415, 331, 352, 385" alt="D1" href=""/>
-            </map>
-          </div>
+export default function Reserve() {
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-            <div className="pickTimeDate">
-                <h2>#2. Select a Date.</h2>
-                <p for="reserveDate"></p>
-                <input type="date" id="reserveDate" name="reservationDate"/>
+    const [age, setAge] = React.useState('');
+    const [date, setValue] = React.useState(dayjs());
+    const setTableSelection = (event) => {
+      setAge(event.target.value);
+    };
 
-                <h2>#3. Select Time.</h2>
-                <p for="reserveTime"></p>
-                <input type="time" id="reserveTime" name="reservationTime"/>
+    const setReservationDate = (newValue) => {
+      setValue(newValue);
+    };
+
+  return (
+
+    <Box         
+    display="flex" 
+    width="100%" height= "auto" 
+    paddingTop="1em"
+    alignItems="center"
+    textAlign="center"
+    justifyContent="center"
+    colro>
+    <Paper>
+        <div className="reservePage"/>
+            <div className="tableSelect">
+            <h2>Select a Table for Your Reservation</h2>
+            <FormControl sx={{ mr: 5, minWidth: 120 }}>
+                <InputLabel id="demo-simple-select-label">Table</InputLabel>
+                <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={age}
+                label="Age"
+                onChange={setTableSelection}
+                >
+                    <MenuItem value={1}>1A</MenuItem>
+                    <MenuItem value={2}>1B</MenuItem>
+                    <MenuItem value={3}>1C</MenuItem>
+                    <MenuItem value={4}>1D</MenuItem>
+                    <MenuItem value={5}>2A</MenuItem>
+                    <MenuItem value={6}>2B</MenuItem>
+                    <MenuItem value={7}>2C</MenuItem>
+                    <MenuItem value={8}>3A</MenuItem>
+                    <MenuItem value={9}>3B</MenuItem>
+                    <MenuItem value={10}>3C</MenuItem>
+                    <MenuItem value={11}>4A</MenuItem>
+                </Select>
+            </FormControl>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DesktopDatePicker
+                label="Date desktop"
+                inputFormat="MM/DD/YYYY"
+                value={date}
+                onChange={setReservationDate}
+                renderInput={(params) => <TextField {...params} />}
+                />
+                </LocalizationProvider>
+            <br/>
+            <div>
+                <h3>Available Times</h3>
+                <p>12:00pm 1:00pm 2:00pm 3:00pm 4:00pm 5:00pm 6:00pm 7:00pm 8:00pm</p>
             </div>
-
-            <div className="getCustInfo">
-                <h2>#3. Add your reservation info.</h2>
-                <form action="/users/create" method="POST">
-                    <p for="fname">First Name</p>
-                    <input type="text" id="fname" placeholder="Enter First Name" name="firstName" required/>
-
-                    <p for="lname">Last Name</p>
-                    <input type="text" id="lname" placeholder="Enter Last Name" name="lastName" required/>
-
-                    <p for="phonenum">Phone Number</p>
-                    <input type="text" id="phonenum" placeholder="Enter Phone Number" name="phoneNumber" required/>
-
-                    <p for="email">Email</p>
-                    <input type="text" id="email" placeholder="Enter Email Adress" name="emailAdress" required/>
-
-                    <button type="submit">Submit</button>
-                </form>
+            <br/>
+                <img src="images/tablesLayout.jpeg" alt="table selection"/>
+                <div className='next'>
+                <BasicModal/>
                 </div>
-        </div>
-    )
+            </div>
+    </Paper>
+    </Box>
+  );
+
 }
 
-
-export default Reserve;

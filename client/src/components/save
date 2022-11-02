@@ -55,3 +55,40 @@
         <button type="submit">Submit</button>
     </form>
 </div>
+
+
+
+
+
+<div className="reservePage">
+  <div className="tableSelect">
+  <h2>Select a Table for Your Reservation</h2>
+  <FormControl variant="standard" sx={{ m: 1, minWidth:80 }}>
+      <InputLabel id="demo-simple-select-standard-label">Table</InputLabel>
+      <Select
+      labelId="demo-simple-select-standard-label"
+      id="demo-simple-select-standard-label"
+      value={age}
+      label="Age"
+      onChange={handleChange}
+      >
+          <MenuItem value={1}>1A</MenuItem>
+          <MenuItem value={2}>1B</MenuItem>
+          <MenuItem value={3}>1C</MenuItem>
+          <MenuItem value={4}>1D</MenuItem>
+          <MenuItem value={5}>2A</MenuItem>
+          <MenuItem value={6}>2B</MenuItem>
+          <MenuItem value={7}>2C</MenuItem>
+          <MenuItem value={8}>3A</MenuItem>
+          <MenuItem value={9}>3B</MenuItem>
+          <MenuItem value={10}>3C</MenuItem>
+          <MenuItem value={11}>4A</MenuItem>
+      </Select>
+  </FormControl>
+      <img src="images/tablesLayout.jpeg" alt="table selection"/>
+      
+      <Fab className=".fab" variant="extended" size="large" color="primary" aria-label="add">
+      Select Date
+      </Fab>
+  </div>
+</div>
