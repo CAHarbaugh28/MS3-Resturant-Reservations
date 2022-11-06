@@ -11,7 +11,7 @@ console.log(`Database Url: ${process.env.DATABASE_URL}`)
 //https://stackoverflow.com/questions/62098110/heroku-app-throwing-error-self-signed-certificate
 const pool = new Pool({
   connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
-  ssl: { rejectUnauthorized: false },
+  ssl: false,
 })
 
 module.exports = { pool }
