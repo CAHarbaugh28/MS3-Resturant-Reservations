@@ -15,21 +15,39 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import BasicModal from '../../components/reserve';
 import PickTime from '../../components/pickTime';
 
-
-
 export default function Reserve() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const [age, setAge] = React.useState('');
-    const [date, setValue] = React.useState(dayjs());
-    const setTableSelection = (event) => {
-      setAge(event.target.value);
+
+    const [currentSelectedTableSate, setSelectedTableState] = React.useState('');
+    const [currentReservationDateState, setReservationDateState] = React.useState('');
+    const [currentAvailableTimesFromServer, setAvailableTimesFromServer] = React.useState([]);
+    const [formattedTableColRowArraryForApi, setFormattedTableColRowArraryForApi] = React.useState([]);
+    const [formateedDateForApi, setFormateedDateForApi] = React.useState('');
+
+    const setSelectedTable = (value) => {
+      setSelectedTableState(value.target.value);
+
+      setFormattedTableColRowArraryForApi(value.target.value.split("/")); //we need to split here because the need passed into the api as row & col separatly parameters
     };
 
-    const setReservationDate = (newValue) => {
-      setValue(newValue);
+    const setReservationDate = (value) => {
+      setReservationDateState(value);
+
+      setFormateedDateForApi(`${value.$y}-${value.$M}-${value.$D}`);
+      var serverResposneTimes = getAvailableTimes(formattedTableColRowArraryForApi[0], formattedTableColRowArraryForApi[1], `${value.$y}-${value.$M}-${value.$D}`);
+      setAvailableTimesFromServer(serverResposneTimes);
+    };
+
+    const getAvailableTimes = (trow, tcol, rdate) => {
+      fetch(`/api/table/getAvailableTimes/${trow}/${tcol}/${rdate}`)
+        .then(result => result.json())
+        .then(body => {
+          console.log(body);
+          setAvailableTimesFromServer(body);
+        });
     };
 
   return (
@@ -40,7 +58,8 @@ export default function Reserve() {
     paddingTop="1em"
     alignItems="center"
     textAlign="center"
-    justifyContent="center">
+    justifyContent="center"
+    >
     <Paper>
         <div className="reservePage"/>
             <div className="tableSelect">
@@ -50,9 +69,9 @@ export default function Reserve() {
                 <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={age}
-                label="Age"
-                onChange={setTableSelection}
+                value={currentSelectedTableSate}
+                label="Table"
+                onChange={setSelectedTable}
                 >
                     <MenuItem value={'1/A'}>1A</MenuItem>
                     <MenuItem value={'1/B'}>1B</MenuItem>
@@ -69,9 +88,9 @@ export default function Reserve() {
             </FormControl>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DesktopDatePicker
-                label="Date desktop"
+                label="Reservation Date"
                 inputFormat="MM/DD/YYYY"
-                value={date}
+                value={currentReservationDateState}
                 onChange={setReservationDate}
                 renderInput={(params) => <TextField {...params} />}
                 />
