@@ -21,6 +21,7 @@ GO
 
 DROP TABLE IF EXISTS public.customer_info;
 
+
 CREATE TABLE IF NOT EXISTS public.customer_info
 (
     id SERIAL PRIMARY KEY,
@@ -32,6 +33,8 @@ CREATE TABLE IF NOT EXISTS public.customer_info
     CONSTRAINT customer_info_phone_number_key UNIQUE (phone_number)
 )
 
+ALTER TABLE public.customer_info  ADD CONSTRAINT const_no_duplicate_customer UNIQUE (first_name,last_name,phone_number,email);
+
 ALTER TABLE IF EXISTS public.customer_info
     OWNER to postgres;
 
@@ -40,6 +43,20 @@ ALTER TABLE IF EXISTS public.customer_info
 
 --INSERT INTO public.customer_info (first_name, last_name, phone_number, email)
 --	VALUES('Carter', 'Harbaugh', '1231234444', 'carter.harbaugh@gmail.com');
+
+
+DROP TABLE IF EXISTS public.reservations;
+
+CREATE OR REPLACE FUNCTION public.reservation_confirmation_code() RETURNS varchar(8)
+AS $$
+DECLARE
+    new_code varchar(8);
+BEGIN
+	new_code := UPPER(SUBSTRING(MD5(''||NOW()::TEXT||RANDOM()::TEXT) FOR 8));
+	RETURN new_code;
+END;
+$$ LANGUAGE PLPGSQL;
+
 
 DROP TABLE IF EXISTS public.reservations;
 
@@ -53,6 +70,7 @@ CREATE TABLE IF NOT EXISTS public.reservations
     created_date timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
     arrived boolean NOT NULL DEFAULT false,
     cancelled boolean NOT NULL DEFAULT false,
+	confirmationId varchar(8) NOT NULL DEFAULT reservation_confirmation_code(),
     CONSTRAINT "customerID_to_reservation_table" FOREIGN KEY (customer_id)
         REFERENCES public.customer_info (id) MATCH FULL
         ON UPDATE NO ACTION
@@ -63,8 +81,10 @@ CREATE TABLE IF NOT EXISTS public.reservations
         REFERENCES public.table_info (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-        NOT VALID
-)
+        NOT VALID,
+	CONSTRAINT const_no_duplicate_reservations UNIQUE (customer_id,table_id,r_date,r_time)
+);
+
 
 --INSERT INTO public.reservations
 --(customer_id, table_id, r_date, r_time, created_date, arrived, cancelled)
@@ -132,3 +152,69 @@ CREATE TABLE IF NOT EXISTS public.hours_list
 --select * from public.hours_list;
 
 insert into public.hours_list (hours) values ('12:00 PM'), ('01:00 PM'), ('02:00 PM'), ('03:00 PM'), ('04:00 PM'), ('05:00 PM'), ('06:00 PM'), ('07:00 PM'), ('08:00 PM');
+
+create or replace procedure public.new_reservation(
+	customerId int,
+	tableId int,
+	rdate date,
+	rtime time, 
+	inout confirmationCode varchar(8)
+)
+language plpgsql    
+as $$
+begin
+	insert into public.reservations
+	(customer_id, table_id, r_date, r_time)
+	values (customerId, tableId, rdate, rtime)
+	on conflict on constraint const_no_duplicate_reservations do nothing;
+	
+	select confirmationId 
+	into confirmationCode 
+	from public.reservations r 
+	where customer_id = customerId
+		and table_id = tableId 
+		and r_date = rdate
+		and r_time = rtime;
+		
+    commit;
+end;$$
+
+
+-- DO
+-- $$
+-- DECLARE confirmationCode varchar(8);
+-- BEGIN
+-- CALL public.new_reservation(2,3, '2022-11-25','06:00:00 PM',confirmationCode);
+-- raise notice 'ConfirmationId: %', confirmationCode;
+-- end;
+-- $$;
+
+
+create or replace procedure public.upsert_customer(
+	fname varchar(20),
+	lname varchar(20),
+	phone varchar(10),
+	eaddy varchar,
+	inout customerId int
+)
+language plpgsql    
+as $$
+begin
+	insert into public.customer_info 
+		(first_name, last_name, phone_number, email)
+	values 
+		(fname, lname, phone, eaddy)
+	on conflict on constraint const_no_duplicate_customer do nothing;
+	
+	select id
+	into customerId
+	from public.customer_info r 
+	where first_name = fname 
+		and last_name = lname
+		and phone_number = phone
+		and email = eaddy
+	limit 1;
+
+    commit;
+end
+$$;
