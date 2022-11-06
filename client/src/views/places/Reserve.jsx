@@ -13,6 +13,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import BasicModal from '../../components/reserve';
+import PickTime from '../../components/pickTime';
 
 
 
@@ -39,8 +40,7 @@ export default function Reserve() {
     paddingTop="1em"
     alignItems="center"
     textAlign="center"
-    justifyContent="center"
-    colro>
+    justifyContent="center">
     <Paper>
         <div className="reservePage"/>
             <div className="tableSelect">
@@ -54,17 +54,17 @@ export default function Reserve() {
                 label="Age"
                 onChange={setTableSelection}
                 >
-                    <MenuItem value={1}>1A</MenuItem>
-                    <MenuItem value={2}>1B</MenuItem>
-                    <MenuItem value={3}>1C</MenuItem>
-                    <MenuItem value={4}>1D</MenuItem>
-                    <MenuItem value={5}>2A</MenuItem>
-                    <MenuItem value={6}>2B</MenuItem>
-                    <MenuItem value={7}>2C</MenuItem>
-                    <MenuItem value={8}>3A</MenuItem>
-                    <MenuItem value={9}>3B</MenuItem>
-                    <MenuItem value={10}>3C</MenuItem>
-                    <MenuItem value={11}>4A</MenuItem>
+                    <MenuItem value={'1/A'}>1A</MenuItem>
+                    <MenuItem value={'1/B'}>1B</MenuItem>
+                    <MenuItem value={'1/C'}>1C</MenuItem>
+                    <MenuItem value={'1/D'}>1D</MenuItem>
+                    <MenuItem value={'2/A'}>2A</MenuItem>
+                    <MenuItem value={'2/B'}>2B</MenuItem>
+                    <MenuItem value={'2/C'}>2C</MenuItem>
+                    <MenuItem value={'3/A'}>3A</MenuItem>
+                    <MenuItem value={'4/A'}>4A</MenuItem>
+                    <MenuItem value={'4/B'}>4B</MenuItem>
+                    <MenuItem value={'4/C'}>4C</MenuItem>
                 </Select>
             </FormControl>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -77,9 +77,8 @@ export default function Reserve() {
                 />
                 </LocalizationProvider>
             <br/>
-            <div>
-                <h3>Available Times</h3>
-                <p>12:00pm 1:00pm 2:00pm 3:00pm 4:00pm 5:00pm 6:00pm 7:00pm 8:00pm</p>
+            <div className="pickTime">
+            <PickTime/>
             </div>
             <br/>
                 <img src="images/tablesLayout.jpeg" alt="table selection"/>
