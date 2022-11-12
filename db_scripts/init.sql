@@ -204,3 +204,23 @@ begin
     commit;
 end
 $$;
+
+
+drop user if exists api_user;
+
+create user api_user;
+
+alter user api_user with encrypted password 'Trains2022';
+
+alter table if exists public.reservations
+owner to api_user;
+
+alter table if exists public.customer_info
+owner to api_user;
+
+alter table if exists public.table_info
+owner to api_user;
+
+alter table if exists public.hours_list
+owner to api_user;
+

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
-export default function PickTime() {
+export default function PickTime({availableTimes}) {
+    
     let times = [
 
     ]
@@ -9,6 +10,7 @@ export default function PickTime() {
 
     let handleTimeChange = (e) => {
         setTime(e.target.value)
+        debugger;
     }
 
         return (

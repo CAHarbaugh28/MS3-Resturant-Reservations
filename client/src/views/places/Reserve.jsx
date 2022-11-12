@@ -23,7 +23,7 @@ export default function Reserve() {
 
     const [currentSelectedTableSate, setSelectedTableState] = React.useState('');
     const [currentReservationDateState, setReservationDateState] = React.useState('');
-    const [currentAvailableTimesFromServer, setAvailableTimesFromServer] = React.useState([]);
+    const [currentAvailableTimesFromServer, setAvailableTimesFromServer] = React.useState(null);
     const [formattedTableColRowArraryForApi, setFormattedTableColRowArraryForApi] = React.useState([]);
     const [formateedDateForApi, setFormateedDateForApi] = React.useState('');
 
@@ -33,20 +33,21 @@ export default function Reserve() {
       setFormattedTableColRowArraryForApi(value.target.value.split("/")); //we need to split here because the need passed into the api as row & col separatly parameters
     };
 
-    const setReservationDate = (value) => {
+    async function setReservationDate(value) { 
+      debugger;
       setReservationDateState(value);
 
       setFormateedDateForApi(`${value.$y}-${value.$M}-${value.$D}`);
-      var serverResposneTimes = getAvailableTimes(formattedTableColRowArraryForApi[0], formattedTableColRowArraryForApi[1], `${value.$y}-${value.$M}-${value.$D}`);
-      setAvailableTimesFromServer(serverResposneTimes);
+      let availableTimes = await getAvailableTimes(formattedTableColRowArraryForApi[0], formattedTableColRowArraryForApi[1], `${value.$y}-${value.$M}-${value.$D}`);
     };
 
-    const getAvailableTimes = (trow, tcol, rdate) => {
-      fetch(`/api/table/getAvailableTimes/${trow}/${tcol}/${rdate}`)
+    async function getAvailableTimes(trow, tcol, rdate) {
+      return await fetch(`/api/table/getAvailableTimes/${trow}/${tcol}/${rdate}`)
         .then(result => result.json())
         .then(body => {
-          console.log(body);
+          // debugger;
           setAvailableTimesFromServer(body);
+          // console.log(currentAvailableTimesFromServer);
         });
     };
 
@@ -97,7 +98,7 @@ export default function Reserve() {
                 </LocalizationProvider>
             <br/>
             <div className="pickTime">
-            <PickTime/>
+            <PickTime availableTimes={currentAvailableTimesFromServer}/>
             </div>
             <br/>
                 <img src="images/tablesLayout.jpeg" alt="table selection"/>
