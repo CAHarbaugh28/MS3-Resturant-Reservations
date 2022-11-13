@@ -6,6 +6,34 @@ body {
     background-color: #EFE6DD;
 }
 
+.menu {
+    padding: 2em 5em;
+    margin-top: 2em;
+    .menuItems {
+        padding: 0 3em;
+    }
+    h1 {
+        text-align: center;
+        font-size: 42px;
+        font-family: $my-font;
+        color: $dark-brown;
+        font-weight: 100;
+        margin: .2em;
+    }
+    h3 {
+        padding-top: 1em;
+        font-size: 28px;
+    }
+    li {
+        font-size: 20px;
+        display: flex;
+        padding-top: .5em;
+        .dots {
+            border-bottom: 3px dotted black;
+            flex: 1;
+        }
+    }
+}
 
 
 
@@ -65,7 +93,47 @@ body {
         }
     }
     
-.custModal {
-
+.menuPictures {
+    img {
+        padding: 0em;
+        padding-bottom: .5em;
+    }
+    .menuBtn {
+        text-align: center;
+        padding: 3em 0;
+        a {
+            text-align: center;
+            display: inline;
+            padding: 1em 2em;
+            font-size: 25px;
+            text-decoration: none;
+            border-radius: 10px;
+            color: $light-tan;
+            background-color: $dark-brown;
+            border-color: $dark-brown;
+            border-style: solid;
+            border-width: 5px;
+            &:hover {
+                border-color: $dark-brown;
+                background-color: white;
+                color: $dark-brown;
+            }
+    }
+}
+    .menuReserveBtn {
+        font-family: $my-font;
+        background-color: $light-brown;
+        color: $light-white;
+        font-size: 40px;
+        text-align: center;
+        border-radius: 5px;
+        border: none;
+        padding: 1em 1em;
+        transition: 250ms;
+        text-transform: none;
+        &:hover {
+            background-color: $dark-brown;
+        }
+    }
 }
 
