@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect, useState } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -13,44 +13,62 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import BasicModal from '../../components/reserve';
-import PickTime from '../../components/pickTime';
 
 export default function Reserve() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    const [resTable, setResTable] = useState();
+    const [formatedResTable, setResFormatedTable] = useState();
+    const [resDate, setResDate ] = useState();
+    const [resTime, setResTime ] = useState();
+    const [formatedResDate, setResFormatedDate ] = useState();
+    const [timeResponse, setTimeResponse] = useState();
 
-
-    const [currentSelectedTableSate, setSelectedTableState] = React.useState('');
-    const [currentReservationDateState, setReservationDateState] = React.useState('');
-    const [currentAvailableTimesFromServer, setAvailableTimesFromServer] = React.useState(null);
-    const [formattedTableColRowArraryForApi, setFormattedTableColRowArraryForApi] = React.useState([]);
-    const [formateedDateForApi, setFormateedDateForApi] = React.useState('');
-
-    const setSelectedTable = (value) => {
-      setSelectedTableState(value.target.value);
-
-      setFormattedTableColRowArraryForApi(value.target.value.split("/")); //we need to split here because the need passed into the api as row & col separatly parameters
-    };
-
-    async function setReservationDate(value) { 
+    const onResTableChange = ({target}) => {
+      const {value} = target;
+      setResTable(value);
+      setResFormatedTable(value.split("/"));
+    }
+    const onResDateChange = (target) => {
+      setResDate(target);
+      setResFormatedDate(`${target.$y}-${target.$M}-${target.$D}`);
+    }
+    const onResTimeChange = (target) => {
       debugger;
-      setReservationDateState(value);
+      setResTime(target);
+    }
 
-      setFormateedDateForApi(`${value.$y}-${value.$M}-${value.$D}`);
-      let availableTimes = await getAvailableTimes(formattedTableColRowArraryForApi[0], formattedTableColRowArraryForApi[1], `${value.$y}-${value.$M}-${value.$D}`);
-    };
+    useEffect(() =>{
+      if (formatedResTable && formatedResDate) { 
+        fetch(`/api/table/getAvailableTimes/${formatedResTable ? formatedResTable[0] : null}/${formatedResTable ? formatedResTable[1] : null}/${formatedResDate}`)
+          .then(result => result.json())
+          .then(body => {
+            setTimeResponse(body);
+          });
+      }
+    }, [ resDate, resTable, formatedResTable, formatedResDate] )
 
-    async function getAvailableTimes(trow, tcol, rdate) {
-      return await fetch(`/api/table/getAvailableTimes/${trow}/${tcol}/${rdate}`)
-        .then(result => result.json())
-        .then(body => {
-          // debugger;
-          setAvailableTimesFromServer(body);
-          // console.log(currentAvailableTimesFromServer);
-        });
-    };
-
+    function transformHours(inputHours) {
+      switch (inputHours) {
+        case "12:00:00":
+          return "12:00PM";
+        case "13:00:00":
+          return "1:00PM";
+        case "14:00:00":
+          return "2:00PM";
+        case "15:00:00":
+          return "3:00PM";
+        case "16:00:00":
+          return "4:00PM";
+        case "17:00:00":
+          return "5:00PM";
+        case "18:00:00":
+          return "6:00PM";
+        case "19:00:00":
+          return "7:00PM";
+        case "20:00:00":
+          return "8:00PM";  
+      };
+    }
+    
   return (
 
     <Box         
@@ -70,9 +88,9 @@ export default function Reserve() {
                 <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={currentSelectedTableSate}
+                value={resTable}
                 label="Table"
-                onChange={setSelectedTable}
+                onChange={onResTableChange}
                 >
                     <MenuItem value={'1/A'}>1A</MenuItem>
                     <MenuItem value={'1/B'}>1B</MenuItem>
@@ -91,15 +109,30 @@ export default function Reserve() {
                 <DesktopDatePicker
                 label="Reservation Date"
                 inputFormat="MM/DD/YYYY"
-                value={currentReservationDateState}
-                onChange={setReservationDate}
+                value={resDate}
+                onChange={onResDateChange}
                 renderInput={(params) => <TextField {...params} />}
                 />
                 </LocalizationProvider>
             <br/>
             <div className="pickTime">
-            <PickTime availableTimes={currentAvailableTimesFromServer}/>
+            <FormControl sx={{ mr: 5, minWidth: 120 }}>
+                <InputLabel id="demo-simple-select-label-2">Available Times</InputLabel>
+                <Select
+                labelId="demo-simple-select-label-2"
+                id="demo-simple-select-2"
+                value={resTime}
+                label="Availible Times"
+                onChange={onResTimeChange}
+                >
+                  {timeResponse && timeResponse.map((row) => {
+
+                    return <MenuItem value={row.hours}>{transformHours(row.hours)}</MenuItem>
+                  })}
+                </Select>
+            </FormControl>              
             </div>
+            {/* <Button>Next</Button> open modal for contact info */}
             <br/>
                 <img src="images/tablesLayout.jpeg" alt="table selection"/>
                 <div className='next'>
