@@ -15,12 +15,16 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import BasicModal from '../../components/reserve';
 
 export default function Reserve() {
-    const [resTable, setResTable] = useState();
-    const [formatedResTable, setResFormatedTable] = useState();
-    const [resDate, setResDate ] = useState();
-    const [resTime, setResTime ] = useState();
-    const [formatedResDate, setResFormatedDate ] = useState();
-    const [timeResponse, setTimeResponse] = useState();
+  const setInitialDate = () => {
+    const dt = new Date();
+    return `${dt.getMonth()+1}/${dt.getDate()}/${dt.getFullYear()}`;
+  }
+    const [resTable, setResTable] = useState('');
+    const [formatedResTable, setResFormatedTable] = useState('');
+    const [resDate, setResDate ] = useState(setInitialDate);
+    const [resTime, setResTime ] = useState('');
+    const [formatedResDate, setResFormatedDate ] = useState('');
+    const [timeResponse, setTimeResponse] = useState('');
 
     const onResTableChange = ({target}) => {
       const {value} = target;
@@ -31,9 +35,10 @@ export default function Reserve() {
       setResDate(target);
       setResFormatedDate(`${target.$y}-${target.$M}-${target.$D}`);
     }
-    const onResTimeChange = (target) => {
+    const onResTimeChange = ({target}) => {
       debugger;
-      setResTime(target);
+      const {value} = target;
+      setResTime(value);
     }
 
     useEffect(() =>{
@@ -68,7 +73,6 @@ export default function Reserve() {
           return "8:00PM";  
       };
     }
-    
   return (
 
     <Box         
@@ -126,8 +130,7 @@ export default function Reserve() {
                 onChange={onResTimeChange}
                 >
                   {timeResponse && timeResponse.map((row) => {
-
-                    return <MenuItem value={row.hours}>{transformHours(row.hours)}</MenuItem>
+                    return <MenuItem key={row.hours} value={row.hours}>{transformHours(row.hours)}</MenuItem>
                   })}
                 </Select>
             </FormControl>              
