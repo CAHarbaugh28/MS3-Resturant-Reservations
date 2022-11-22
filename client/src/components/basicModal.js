@@ -1,11 +1,10 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
+import React, {useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
-import { bgcolor, fontFamily, textAlign } from '@mui/system';
 import Stack from '@mui/material/Stack';
+import {SaveCustomerAndMakeReservation} from '../api';
 
 const customerInfo = {
     position: 'absolute',
@@ -37,12 +36,51 @@ const reserveBtn = {
 
 }
 
-
-  export default function BasicModal() {
+  export default function BasicModal(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const [fname, setCustFName] = useState();
+    const [lname, setCustLName] = useState();
+    const [phonenum, setCustPhoneNum] = useState();
+    const [email, setCustEmail] = useState();
   
+  
+    const onCustFNameChange = ({target}) => {
+      const {value} = target;
+      setCustFName(value);
+    }
+    const onCustLNameChange = ({target}) => {
+      const {value} = target;
+      setCustLName(value);
+    }
+    const onCustPhoneNumChange = ({target}) => {
+      const {value} = target;
+      setCustPhoneNum(value);
+    }
+    const onCustEmailChange = ({target}) => {
+      const {value} = target;
+      setCustEmail(value);
+    }
+
+    function save(){
+      debugger;
+      var customer = {
+        firstName: fname,
+        lastName: lname,
+        phone: phonenum,
+        email: email
+      }
+      var reservation = {
+        tableid: props.tableId,
+        rdate: props.rdate,
+        rtime: props.rtime
+      }
+      var confirmationCode = SaveCustomerAndMakeReservation(customer, reservation);
+      debugger;
+    }
+
     return (
       <div className='custModal'>
         <Button onClick={handleOpen}>Make Reservation</Button>
@@ -65,27 +103,40 @@ const reserveBtn = {
                 required
                 id="outlined-required"
                 label="First Name"
+                value={fname}
+                onChange={onCustFNameChange}
 
                 />
                 <TextField
                 required
                 id="outlined-required"
                 label="Last Name"
+                value={lname}
+                onChange={onCustLNameChange}
 
                 />
                 <TextField
                 required
+                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                 id="outlined-required"
                 label="Phone Number"
+                value={phonenum}
+                onChange={onCustPhoneNumChange}
 
                 />
                 <TextField
                 id="outlined-required"
                 label="Email Address"
+                value={email}
+                onChange={onCustEmailChange}
                 />
-                <Button sx={reserveBtn} onClick={handleOpen}>Reserve</Button>
+                <Button sx={reserveBtn} onClick={save}>Reserve</Button>
           </Stack>
         </Modal>
       </div>
     );
+    if (!props.rrow || !props.rcol || !props.rdate || !props.rtime) {
+
+      return; 
+    }
   }

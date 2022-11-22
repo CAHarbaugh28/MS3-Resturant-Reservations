@@ -110,7 +110,7 @@ tables.get('/getAvailableTimes/:trow/:tcol/:rdate', function(req, res) {
       if (results.rowCount == 0)
         res.send([ { hours: "Not Avalible" } ] );
       else
-        res.send(results.rows);
+        res.send({tableId: tableId, hours: [results.rows] });
     });
   });
 

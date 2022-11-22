@@ -12,7 +12,7 @@ import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import BasicModal from '../../components/reserve';
+import BasicModal from '../../components/basicModal';
 
 export default function Reserve() {
   const setInitialDate = () => {
@@ -25,6 +25,7 @@ export default function Reserve() {
     const [resTime, setResTime ] = useState('');
     const [formatedResDate, setResFormatedDate ] = useState('');
     const [timeResponse, setTimeResponse] = useState('');
+    const [tableIdResponse, setTableIdResponse] = useState('');
 
     const onResTableChange = ({target}) => {
       const {value} = target;
@@ -36,7 +37,6 @@ export default function Reserve() {
       setResFormatedDate(`${target.$y}-${target.$M}-${target.$D}`);
     }
     const onResTimeChange = ({target}) => {
-      debugger;
       const {value} = target;
       setResTime(value);
     }
@@ -46,7 +46,9 @@ export default function Reserve() {
         fetch(`/api/table/getAvailableTimes/${formatedResTable ? formatedResTable[0] : null}/${formatedResTable ? formatedResTable[1] : null}/${formatedResDate}`)
           .then(result => result.json())
           .then(body => {
-            setTimeResponse(body);
+            debugger;
+            setTimeResponse(body.hours[0]);
+            setTableIdResponse(body.tableId);
           });
       }
     }, [ resDate, resTable, formatedResTable, formatedResDate] )
@@ -139,7 +141,7 @@ export default function Reserve() {
             <br/>
                 <img src="images/tablesLayout.jpeg" alt="table selection"/>
                 <div className='next'>
-                <BasicModal/>
+                <BasicModal tableId={tableIdResponse} rdate={formatedResDate} rtime={resTime}/>
                 </div>
             </div>
     </Paper>
