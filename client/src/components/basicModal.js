@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import {SaveCustomerAndMakeReservation} from '../api';
+import Confirmation from './comfirmation';
 
 const customerInfo = {
     position: 'absolute',
@@ -64,7 +65,7 @@ const reserveBtn = {
       setCustEmail(value);
     }
 
-    function save(){
+    async function save(){
       debugger;
       var customer = {
         firstName: fname,
@@ -77,7 +78,7 @@ const reserveBtn = {
         rdate: props.rdate,
         rtime: props.rtime
       }
-      var confirmationCode = SaveCustomerAndMakeReservation(customer, reservation);
+      var confirmationCode = await SaveCustomerAndMakeReservation(customer, reservation);
       debugger;
     }
 
@@ -131,6 +132,7 @@ const reserveBtn = {
                 onChange={onCustEmailChange}
                 />
                 <Button sx={reserveBtn} onClick={save}>Reserve</Button>
+                {/* <Confirmation/> */}
           </Stack>
         </Modal>
       </div>

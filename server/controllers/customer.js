@@ -8,7 +8,6 @@ var express = require('express');
 var customers = express.Router();
 
 customers.post('/', async (req, res) => {
-  debugger;
   if(StringHelpers.isNull(req.body)) 
     return res.status(400).send({ error: `Bad Request, body is null or empty.`});
   if(StringHelpers.isNullOrWhitespace(req.body.firstName)) 

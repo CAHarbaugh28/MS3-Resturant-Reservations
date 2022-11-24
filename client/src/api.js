@@ -1,6 +1,5 @@
-export function SaveCustomerAndMakeReservation(customer, reservation){
-    console.log(JSON.stringify(customer));
-    fetch('/api/customer', {
+export async function SaveCustomerAndMakeReservation(customer, reservation){
+    const customerid = await fetch('/api/customer', {
         method: 'POST',
         //mode: 'cors',
         headers: {
@@ -10,19 +9,24 @@ export function SaveCustomerAndMakeReservation(customer, reservation){
     })
     .then(result => result.json())
     .then(body => {
-        fetch('/api/reservation', {
-            method: 'POST',
-            //mode: 'cors',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(setupReservation(body.customerid, reservation))
-        })
-        .then(result => result.json())
-        .then( body => {
-            return body; //confirmationCode
-        });  
+        debugger;
+        return body.customerid;
     });
+debugger;
+console.log(customerid);
+    await fetch('/api/reservation', {
+        method: 'POST',
+        //mode: 'cors',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(setupReservation(customerid, reservation))
+    })
+    .then(result => result.json())
+    .then( body => {
+        debugger;
+        return body; //confirmationCode
+    });  
 }
 
 function setupReservation(customerid, reservation) {
